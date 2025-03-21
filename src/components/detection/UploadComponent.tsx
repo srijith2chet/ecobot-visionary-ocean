@@ -1,7 +1,7 @@
-
 import React, { useState, useRef } from 'react';
 import { Upload, X, Image, FileVideo, AlertCircle } from 'lucide-react';
 import { detectPlastics } from '@/services/detectionService';
+import { DetectionResult } from '@/types/detection';
 
 interface UploadComponentProps {
   onDetectionComplete: (results: DetectionResult[], imageUrl: string) => void;
@@ -26,13 +26,11 @@ const UploadComponent: React.FC<UploadComponentProps> = ({ onDetectionComplete, 
   };
 
   const processFile = (file: File) => {
-    // Check if file is an image
     if (!file.type.match('image.*')) {
       onError('Please upload an image file (JPEG, PNG, etc.)');
       return;
     }
 
-    // Check file size (limit to 10MB)
     if (file.size > 10 * 1024 * 1024) {
       onError('File size exceeds 10MB limit');
       return;
@@ -76,7 +74,6 @@ const UploadComponent: React.FC<UploadComponentProps> = ({ onDetectionComplete, 
     try {
       setIsUploading(true);
       
-      // Simulate progress for better UX
       const progressInterval = setInterval(() => {
         setUploadProgress(prev => {
           if (prev >= 90) {

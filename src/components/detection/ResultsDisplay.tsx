@@ -1,6 +1,6 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { BarChart3, Filter, Download, Maximize2, Info } from 'lucide-react';
+import { DetectionResult } from '@/types/detection';
 
 interface ResultsDisplayProps {
   results: DetectionResult[];

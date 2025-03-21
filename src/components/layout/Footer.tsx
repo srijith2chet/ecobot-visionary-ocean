@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, GitHub, Twitter, Linkedin, Mail } from 'lucide-react';
+import { ChevronRight, Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -20,7 +19,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-white/60 hover:text-aqua transition-colors">
-                <GitHub size={20} />
+                <Github size={20} />
               </a>
               <a href="#" className="text-white/60 hover:text-aqua transition-colors">
                 <Twitter size={20} />
