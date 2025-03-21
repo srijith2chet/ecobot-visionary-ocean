@@ -1,11 +1,12 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 33% 98%;
+    --foreground: 210 40% 2%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 195 85% 41%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -22,7 +23,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 175 84% 32%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -30,63 +31,39 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 195 85% 41%;
 
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 217 33% 17%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 217 33% 17%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 180 100% 50%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217 32% 12%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 217 33% 17%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 175 84% 32%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 175 84% 32%;
   }
 }
 
@@ -96,6 +73,110 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-ocean text-foreground dark transition-colors duration-300;
   }
+}
+
+.ocean-gradient {
+  background: linear-gradient(135deg, #0A192F 0%, #172A46 100%);
+}
+
+.glass-panel {
+  @apply bg-ocean-surface backdrop-blur-md border border-white/10 rounded-xl shadow-xl;
+}
+
+.detection-box {
+  position: absolute;
+  border: 2px solid;
+  pointer-events: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
+.detection-box:hover {
+  filter: brightness(1.2);
+}
+
+.detection-box-label {
+  position: absolute;
+  top: -25px;
+  left: 0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: white;
+  white-space: nowrap;
+}
+
+.water-effect {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: -25%;
+  left: 0;
+  background: linear-gradient(90deg, rgba(100, 255, 218, 0.03) 0%, rgba(100, 255, 218, 0.05) 50%, rgba(100, 255, 218, 0.03) 100%);
+  filter: blur(4px);
+  z-index: 0;
+  animation: wave 25s linear infinite;
+  transform-origin: center bottom;
+  border-radius: 50%;
+}
+
+.parallax {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Hide scrollbar */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Typography Enhancements */
+.heading-xl {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  letter-spacing: -0.02em;
+}
+
+.heading-lg {
+  @apply text-3xl md:text-4xl font-bold tracking-tight;
+  letter-spacing: -0.01em;
+}
+
+.heading-md {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+}
+
+.body-text {
+  @apply text-base md:text-lg leading-relaxed;
+}
+
+/* Button Enhancements */
+.button-primary {
+  @apply relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium transition-all bg-aqua text-ocean rounded-md hover:bg-aqua-light focus:outline-none focus:ring-2 focus:ring-aqua-light focus:ring-offset-2 focus:ring-offset-ocean;
+}
+
+.button-outlined {
+  @apply relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium transition-all bg-transparent border border-aqua text-aqua rounded-md hover:text-ocean hover:bg-aqua focus:outline-none focus:ring-2 focus:ring-aqua focus:ring-offset-2 focus:ring-offset-ocean;
+}
+
+/* Special Effects */
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(100, 255, 218, 0.1);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: pulse-slow 8s infinite;
+  z-index: -1;
 }
